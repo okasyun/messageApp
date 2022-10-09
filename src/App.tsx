@@ -33,10 +33,10 @@ function App() {
       <HashRouter>
         <Routes>
           <Route element={<Layout />}>
-            <Route path={homeUrl} element={<Home />} />
-            <Route path={homeUrl + "/profile"} element={<Profile />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
           </Route>
-          <Route path={homeUrl + "/signup"} element={<Signup />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path={homeUrl + "/login"} element={<Login />} />
           <Route
             path={homeUrl + "/password-reset"}
