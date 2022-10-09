@@ -31,7 +31,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/password-reset" element={<PasswordReset />} />
-          <Route path="/*" element={<Page404 />} />
+          {/* <Route path="/*" element={<Page404 />} /> */}
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
