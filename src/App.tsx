@@ -30,21 +30,18 @@ const Layout = () => {
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <HashRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
           </Route>
           <Route path="/signup" element={<Signup />} />
-          <Route path={homeUrl + "/login"} element={<Login />} />
-          <Route
-            path={homeUrl + "/password-reset"}
-            element={<PasswordReset />}
-          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/password-reset" element={<PasswordReset />} />
           {/* <Route path="/*" element={<Page404 />} /> */}
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
