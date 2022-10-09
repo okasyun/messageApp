@@ -1,6 +1,12 @@
 import React from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import {
+  BrowserRouter,
+  HashRouter,
+  Routes,
+  Route,
+  Outlet,
+} from "react-router-dom";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -24,7 +30,7 @@ const Layout = () => {
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route element={<Layout />}>
             <Route path={homeUrl} element={<Home />} />
@@ -38,7 +44,7 @@ function App() {
           />
           {/* <Route path="/*" element={<Page404 />} /> */}
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </ThemeProvider>
   );
 }
