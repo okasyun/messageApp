@@ -2,7 +2,7 @@
   "name": "messageapp",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://okasyun.github.io",
+  "homepage": "https://okasyun.github.io/messageApp",
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
