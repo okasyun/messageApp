@@ -7,7 +7,7 @@ import {
   DocumentData,
   getDocs,
 } from "firebase/firestore";
-import { firebaseApp } from "../firebase";
+import firebaseApp from "../firebase";
 
 export const useProfile = () => {
   const [profile, setProfile] = useState<DocumentData | null>(null);

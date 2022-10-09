@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Alert, Box, Button, Divider, Stack, TextField } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 
-import { firebaseApp } from "../firebase/index";
+import firebaseApp from "../firebase/index";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { useProfile } from "../hooks/useProfile";
 

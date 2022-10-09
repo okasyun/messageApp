@@ -19,7 +19,7 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import { onAuthStateChanged } from "firebase/auth";
 
 import { useLogout } from "../hooks/useAuth";
-import { firebaseApp } from "../firebase/index";
+import firebaseApp from "../firebase/index";
 import { useProfile } from "../hooks/useProfile";
 const Header = () => {
   const { profile } = useProfile();
