@@ -4,11 +4,11 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { firebaseConfig } from "./config";
 
-const firebase = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
-const firestore = getFirestore(firebase);
-const fireauth = getAuth(firebase);
-const firestorage = getStorage(firebase);
+const firestore = getFirestore();
+const fireauth = getAuth();
+const firestorage = getStorage();
 
 const firebaseApp = {
   fireauth,
