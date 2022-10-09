@@ -10,8 +10,10 @@ const firestore = getFirestore(firebase);
 const fireauth = getAuth(firebase);
 const firestorage = getStorage(firebase);
 
-export const firebaseApp = {
+const firebaseApp = {
   fireauth,
   firestore,
   firestorage,
 };
+
+export default firebaseApp;
