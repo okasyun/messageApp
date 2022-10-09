@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>My App</title>
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
@@ -25,24 +24,20 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <script>
-      // Web サイトをサブディレクトリに配置するなら、この値を 1 にする。
-      const SEGMENT_COUNT = 0;
-
-      // 例えば、SEGMENT_COUNT = 1 の場合、
-      // https://yourname.github.io/repo-name/book/123 のような URL のうち、
-      // repo-name までをベースアドレスとみなし、末尾のパス (books/123)
-      // をエンコードして次のような URL へリダイレクトする。
-      // https://yourname.github.io/repo-name?p=book%2F123
-      const loc = window.location;
-      const origin = loc.origin; //=> https://yourname.github.io
-      const path = loc.href.substr(origin.length + 1); //=> repo-name/book/123
-      const segments = path.split("/"); //=> [repo-name, book, 123]
-      const repo = segments.slice(0, SEGMENT_COUNT).join("/"); //=> repo-name
-      const param = segments.slice(SEGMENT_COUNT).join("/"); //=> book/123
-      const url = origin + "/" + repo + "?p=" + encodeURIComponent(param);
-      loc.replace(url);
-    </script>
+    <title>React App</title>
   </head>
-  <body></body>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
 </html>
