@@ -28,11 +28,14 @@ function App() {
         <Routes>
           <Route element={<Layout />}>
             <Route path={homeUrl} element={<Home />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path={homeUrl + "/profile"} element={<Profile />} />
           </Route>
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/password-reset" element={<PasswordReset />} />
+          <Route path={homeUrl + "/signup"} element={<Signup />} />
+          <Route path={homeUrl + "/login"} element={<Login />} />
+          <Route
+            path={homeUrl + "/password-reset"}
+            element={<PasswordReset />}
+          />
           {/* <Route path="/*" element={<Page404 />} /> */}
         </Routes>
       </BrowserRouter>
