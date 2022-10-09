@@ -42,7 +42,7 @@ const MessageInput = () => {
   };
 
   return (
-    <Box sx={{ position: "fixed", bottom: "0", width: "100%" }}>
+    <Box sx={{ position: "fixed", bottom: "0", width: "100%", zIndex: "1000" }}>
       <Divider />
       <Stack direction="row" spacing={2} sx={{ margin: "0.5rem 1.5rem" }}>
         <TextField
