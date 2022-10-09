@@ -1,3 +1,4 @@
+import React from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 
@@ -24,31 +25,13 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>
-            <Route
-              path="/https://okasyun.github.io/messageApp/"
-              element={<Home />}
-            />
-            <Route
-              path="/https://okasyun.github.io/messageApp/profile"
-              element={<Profile />}
-            />
+            <Route path="/" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
           </Route>
-          <Route
-            path="/https://okasyun.github.io/messageApp/signup"
-            element={<Signup />}
-          />
-          <Route
-            path="/https://okasyun.github.io/messageApp/login"
-            element={<Login />}
-          />
-          <Route
-            path="/https://okasyun.github.io/messageApp/password-reset"
-            element={<PasswordReset />}
-          />
-          <Route
-            path="https://okasyun.github.io/messageApp/*"
-            element={<Page404 />}
-          />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/password-reset" element={<PasswordReset />} />
+          <Route path="/*" element={<Page404 />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

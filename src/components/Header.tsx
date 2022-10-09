@@ -78,10 +78,7 @@ const Header = () => {
         <Toolbar sx={{ justifyContent: "center" }}>
           {/* あまりの部分をTypogが占める */}
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <Link
-              href="https://okasyun.github.io/messageApp/"
-              sx={{ color: "white", textDecoration: "none" }}
-            >
+            <Link href="/" sx={{ color: "white", textDecoration: "none" }}>
               チャットアプリ
             </Link>
           </Typography>
@@ -121,11 +118,7 @@ const Header = () => {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>
-                  <Link
-                    href="https://okasyun.github.io/messageApp/profile"
-                    underline="none"
-                    color="inherit"
-                  >
+                  <Link href="/profile" underline="none" color="inherit">
                     プロフィール
                   </Link>
                 </MenuItem>

@@ -80,10 +80,7 @@ const Signup = () => {
           </Button>
           <Grid container sx={{ justifyContent: "center" }}>
             <Grid item>
-              <Link
-                href="https://okasyun.github.io/messageApp/login"
-                variant="body2"
-              >
+              <Link href="login" variant="body2">
                 ログインはこちら
               </Link>
             </Grid>

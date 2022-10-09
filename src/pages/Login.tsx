@@ -76,20 +76,12 @@ const Login = () => {
           </Button>
           <Grid container sx={{ justifyContent: "center" }}>
             <Grid item xs>
-              <Link
-                href="https://okasyun.github.io/messageApp/password-reset"
-                variant="body2"
-                underline="none"
-              >
+              <Link href="/password-reset" variant="body2" underline="none">
                 パスワードを忘れた方
               </Link>
             </Grid>
             <Grid item>
-              <Link
-                href="https://okasyun.github.io/messageApp/signup"
-                variant="body2"
-                underline="none"
-              >
+              <Link href="/signup" variant="body2" underline="none">
                 アカウントををお持ちでない方
               </Link>
             </Grid>
