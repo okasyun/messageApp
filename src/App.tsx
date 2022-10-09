@@ -11,6 +11,8 @@ import Profile from "./pages/Profile";
 import Header from "./components/Header";
 const theme = createTheme();
 
+const homeUrl = process.env.PUBLIC_URL;
+
 const Layout = () => {
   return (
     <>
@@ -25,7 +27,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>
-            <Route path="/" element={<Home />} />
+            <Route path={homeUrl} element={<Home />} />
             <Route path="/profile" element={<Profile />} />
           </Route>
           <Route path="/signup" element={<Signup />} />
