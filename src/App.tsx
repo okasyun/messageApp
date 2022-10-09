@@ -25,13 +25,31 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="https://okasyun.github.io/messageApp/"
+              element={<Home />}
+            />
+            <Route
+              path="https://okasyun.github.io/messageApp/profile"
+              element={<Profile />}
+            />
           </Route>
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/password-reset" element={<PasswordReset />} />
-          {/* <Route path="/*" element={<Page404 />} /> */}
+          <Route
+            path="https://okasyun.github.io/messageApp/signup"
+            element={<Signup />}
+          />
+          <Route
+            path="https://okasyun.github.io/messageApp/login"
+            element={<Login />}
+          />
+          <Route
+            path="https://okasyun.github.io/messageApp/password-reset"
+            element={<PasswordReset />}
+          />
+          <Route
+            path="https://okasyun.github.io/messageApp/*"
+            element={<Page404 />}
+          />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
