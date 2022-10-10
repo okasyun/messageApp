@@ -45,6 +45,7 @@ const Header = () => {
     });
     // なぜ実行？
     return () => unsubscribe();
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
