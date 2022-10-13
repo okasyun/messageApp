@@ -58,6 +58,7 @@ const Home = () => {
                 alt=""
               />
             </Box>
+            {message.user.name}
             <Box sx={{ ml: 2 }}>
               <Typography sx={{ p: 1, background: "#dddddd", borderRadius: 1 }}>
                 {message.text}
