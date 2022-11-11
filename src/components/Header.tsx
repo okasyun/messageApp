@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Alert,
@@ -21,7 +21,12 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useLogout } from "../hooks/useAuth";
 import firebaseApp from "../firebase/index";
 import { useProfile } from "../hooks/useProfile";
-const Header = () => {
+
+type Props = {
+  title: string;
+};
+const Header: FC<Props> = (props: Props) => {
+  const { title } = props;
   const { profile } = useProfile();
   const { logout } = useLogout();
   const navigate = useNavigate();
@@ -30,8 +35,9 @@ const Header = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [open, setOpen] = useState(false);
 
-  // useEffectは使う必要ない？
   const fireauth = firebaseApp.fireauth;
+
+  // ログイン未完了ならログインページに遷移
   useEffect(() => {
     // Promise型じゃない
     const unsubscribe = onAuthStateChanged(fireauth, (user) => {
@@ -40,10 +46,10 @@ const Header = () => {
       }
       // setAuthにするとエラーになる
       else {
+        // 現在のuser
         setAuth(true);
       }
     });
-    // なぜ実行？
     return () => unsubscribe();
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -79,8 +85,11 @@ const Header = () => {
         <Toolbar sx={{ justifyContent: "center" }}>
           {/* あまりの部分をTypogが占める */}
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <Link href="/" sx={{ color: "white", textDecoration: "none" }}>
-              チャットアプリ
+            <Link
+              href="/all-laboratory"
+              sx={{ color: "white", textDecoration: "none" }}
+            >
+              研究室マッチングアプリ
             </Link>
           </Typography>
           {auth && (
@@ -123,6 +132,17 @@ const Header = () => {
                     プロフィール
                   </Link>
                 </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <Link href="/all-laboratory" underline="none" color="inherit">
+                    研究室一覧
+                  </Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link href="/add-laboratory" underline="none" color="inherit">
+                    研究室登録
+                  </Link>
+                </MenuItem>
+
                 <MenuItem onClick={handleLogout}>ログアウト</MenuItem>
               </Menu>
             </div>

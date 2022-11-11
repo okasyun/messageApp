@@ -17,15 +17,21 @@ const MessageInput = () => {
     setError(false);
     const firestore = firebaseApp.firestore;
 
+    // 入力しない場合エラー
+
     if (message === "") {
       setError(true);
       return;
     }
 
+    // 各研究室のidを置く
+    const labName = "岡本研究室";
     try {
       console.log("Success: Sent");
-      const docRef = collection(firestore, "messages");
-      await addDoc(docRef, {
+
+      const messagePath = collection(firestore, "rooms", labName, "messages");
+
+      const messageRef = await addDoc(messagePath, {
         text: message,
         createdAt: Timestamp.fromDate(new Date()),
         user: {

@@ -140,7 +140,8 @@ const Profile = () => {
             id="name"
             autoComplete="name"
             // 名前が勝手にprofileになる
-            value={name ? name : profile ? profile.name : ""}
+            // value={name ? name : profile ? profile.name : ""}
+            value={name}
             autoFocus
             label="ユーザー名"
             onChange={(e) => setName(e.target.value)}

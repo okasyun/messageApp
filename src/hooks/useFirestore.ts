@@ -43,11 +43,14 @@ const messageConverter: FirestoreDataConverter<Message> = {
 
 const firestore = firebaseApp.firestore;
 
-const useFirestore = (data: string) => {
+// firestoreのmessageコレクションにメッセージを追加
+export const useFirestore = (messages: string) => {
   const [documents, setDocuments] = useState<Message[]>([]);
 
   useEffect(() => {
-    const docRef = collection(firestore, data).withConverter(messageConverter);
+    const docRef = collection(firestore, messages).withConverter(
+      messageConverter
+    );
     const queryRef = query(docRef, orderBy("createdAt"));
     const unsub = onSnapshot(queryRef, (snapshot) => {
       let results: Message[] = [];
@@ -56,12 +59,38 @@ const useFirestore = (data: string) => {
         results.push({ ...doc.data(), id: doc.id });
       });
       setDocuments(results);
+      console.log(documents);
     });
 
     return () => unsub();
-  }, [data]);
+  }, [messages]);
 
   return { documents };
 };
 
-export default useFirestore;
+// ルームの名前
+export const useRoomFirestore = (labName: string) => {
+  const [documents, setDocuments] = useState<Message[]>([]);
+
+  useEffect(() => {
+    const docRef = collection(
+      firestore,
+      "rooms",
+      labName,
+      "messages"
+    ).withConverter(messageConverter);
+    const queryRef = query(docRef, orderBy("createdAt"));
+    const unsub = onSnapshot(queryRef, (snapshot) => {
+      let results: Message[] = [];
+      snapshot.docs.forEach((doc) => {
+        results.push({ ...doc.data(), id: doc.id });
+      });
+      setDocuments(results);
+      console.log(documents);
+    });
+
+    return () => unsub();
+  }, [labName]);
+
+  return { documents };
+};

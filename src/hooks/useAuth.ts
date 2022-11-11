@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 const fireauth = firebaseApp.fireauth;
 
+// パスワードの変更
 export const usePasswordReset = () => {
   const navigate = useNavigate();
   const [success, setSuccess] = useState(false);

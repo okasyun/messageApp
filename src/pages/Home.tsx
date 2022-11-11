@@ -4,12 +4,15 @@ import { format, formatDistance } from "date-fns";
 import { ja } from "date-fns/locale";
 import { Timestamp } from "firebase/firestore";
 
-import useFirestore from "../hooks/useFirestore";
+import { useFirestore } from "../hooks/useFirestore";
 import { useProfile } from "../hooks/useProfile";
 import { Message } from "../types/Message";
 import MessageInput from "../components/MessageInput";
 
+import { useContext } from "react";
+
 const Home = () => {
+  // Firestoreのmessagesドキュメントを持ってくる
   const { documents: messages } = useFirestore("messages");
   const { profile } = useProfile();
 
@@ -36,6 +39,7 @@ const Home = () => {
       return (timestamp = `${timestamp}前`);
     }
   };
+
   return (
     <Box sx={{ flexGrow: 1, m: 2, pt: 6, pb: 4 }}>
       {messages ? (
@@ -43,6 +47,7 @@ const Home = () => {
           <Box
             key={message.id}
             sx={{
+              // height: "10px",
               display: "flex",
               flexDirection:
                 profile && profile.uid === message.user.uid
@@ -58,8 +63,11 @@ const Home = () => {
                 alt=""
               />
             </Box>
-            {message.user.name}
+
             <Box sx={{ ml: 2 }}>
+              <Typography sx={{ fontSize: "10px" }}>
+                {message.user.name}
+              </Typography>
               <Typography sx={{ p: 1, background: "#dddddd", borderRadius: 1 }}>
                 {message.text}
               </Typography>
