@@ -3,6 +3,7 @@ import firebaseApp from "../firebase";
 import {
   collection,
   DocumentData,
+  getDocs,
   FirestoreDataConverter,
   onSnapshot,
   orderBy,
@@ -68,10 +69,15 @@ export const useFirestore = (messages: string) => {
   return { documents };
 };
 
+// ラボのidを状態にする必要がある
 // ルームの名前
-export const useRoomFirestore = (labName: string) => {
+// |
+export const useRoomFirestore = (labName: any) => {
   const [documents, setDocuments] = useState<Message[]>([]);
 
+  /**
+   *
+   */
   useEffect(() => {
     const docRef = collection(
       firestore,
@@ -93,4 +99,27 @@ export const useRoomFirestore = (labName: string) => {
   }, [labName]);
 
   return { documents };
+};
+
+export const useRoomId = () => {
+  const [roomId, setRoomId] = useState<string[]>();
+
+  useEffect(() => {
+    const docRef = collection(firestore, "rooms");
+
+    const unsub = onSnapshot(docRef, (snapshot) => {
+      let roomIdArray: any[] = [];
+      snapshot.docs.forEach((doc) => {
+        roomIdArray.push(doc.id);
+      });
+      setRoomId(roomIdArray);
+      console.log(roomIdArray);
+    });
+
+    return () => unsub();
+  }, []);
+
+  console.log(roomId);
+
+  return roomId;
 };

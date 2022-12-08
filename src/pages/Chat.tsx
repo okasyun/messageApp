@@ -1,4 +1,5 @@
 import { FC, useLayoutEffect, useRef } from "react";
+import { useParams } from "react-router-dom";
 import { Avatar, Box, Typography } from "@mui/material";
 import { format, formatDistance } from "date-fns";
 import { ja } from "date-fns/locale";
@@ -13,15 +14,13 @@ import Header from "../components/Header";
 import MessageInput from "../components/MessageInput";
 
 type Props = {
-  room: string;
+  title: string;
 };
-const Chat: FC<Props> = (props: Props) => {
-  const { room } = props;
-  // const { documents: messages } = useFirestore("messages");
 
-  const { documents: messages } = useRoomFirestore("岡本研究室");
-
-  useRoomFirestore("岡本研究室");
+const Chat = () => {
+  // const { title } = props;
+  const { id } = useParams();
+  const { documents: messages } = useRoomFirestore(id);
   useFirestore("messages");
   const { profile } = useProfile();
 
@@ -92,7 +91,7 @@ const Chat: FC<Props> = (props: Props) => {
           <p>メッセージが存在しません</p>
         )}
         <div ref={bottomRef}></div>
-        <MessageInput />
+        <MessageInput roomId={id} />
       </Box>
     </>
   );

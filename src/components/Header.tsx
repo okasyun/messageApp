@@ -89,7 +89,7 @@ const Header: FC<Props> = (props: Props) => {
               href="/all-laboratory"
               sx={{ color: "white", textDecoration: "none" }}
             >
-              研究室マッチングアプリ
+              {title}
             </Link>
           </Typography>
           {auth && (

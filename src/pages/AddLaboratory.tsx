@@ -11,6 +11,8 @@ const AddLaboratory = () => {
   const [topic, setTopic] = useState("");
   const [univName, setUnivName] = useState("");
   const [professer, setProfesser] = useState("");
+  const [labURL, setLabURL] = useState("");
+  const [labDescription, setLabDescription] = useState("");
 
   const profileData = useProfile();
   const firestore = firebaseApp.firestore;
@@ -25,6 +27,8 @@ const AddLaboratory = () => {
         topic: topic,
         univName: univName,
         professer: professer,
+        labURL: labURL,
+        labDescription: labDescription,
         createdAt: Timestamp.fromDate(new Date()),
         // 必要ないかも
         user: {
@@ -50,7 +54,6 @@ const AddLaboratory = () => {
         <Typography component="h1" variant="h5">
           研究室登録
         </Typography>
-        <Typography>{labName}</Typography>
         <Box
           component="form"
           onSubmit={handleChange}
@@ -79,6 +82,17 @@ const AddLaboratory = () => {
           <TextField
             label="教授名"
             onChange={(e) => setProfesser(e.target.value)}
+          />
+          <TextField
+            label="研究室サイト"
+            rows={4}
+            onChange={(e) => setLabURL(e.target.value)}
+          />
+          <TextField
+            label="研究室概要"
+            rows={5}
+            multiline
+            onChange={(e) => setLabDescription(e.target.value)}
           />
           <Button
             fullWidth

@@ -82,7 +82,6 @@ const Home = () => {
         <p>メッセージが存在しません</p>
       )}
       <div ref={bottomRef}></div>
-      <MessageInput />
     </Box>
   );
 };

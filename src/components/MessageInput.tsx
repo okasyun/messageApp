@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Alert, Box, Button, Divider, Stack, TextField } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 
@@ -6,7 +6,11 @@ import firebaseApp from "../firebase/index";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { useProfile } from "../hooks/useProfile";
 
-const MessageInput = () => {
+type Props = {
+  roomId: string | undefined;
+};
+const MessageInput: FC<Props> = (props: Props) => {
+  const { roomId } = props;
   const [message, setMessage] = useState("");
   const [error, setError] = useState(false);
 
@@ -24,12 +28,13 @@ const MessageInput = () => {
       return;
     }
 
-    // 各研究室のidを置く
-    const labName = "岡本研究室";
     try {
       console.log("Success: Sent");
 
-      const messagePath = collection(firestore, "rooms", labName, "messages");
+      if (roomId === undefined) {
+        return;
+      }
+      const messagePath = collection(firestore, "rooms", roomId, "messages");
 
       const messageRef = await addDoc(messagePath, {
         text: message,

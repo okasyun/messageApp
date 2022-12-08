@@ -3,10 +3,11 @@ import styled from "styled-components";
 import { Box } from "@mui/material";
 import { collection, onSnapshot } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-
 import Typography from "@mui/material/Typography";
 import LaboratoryCard from "../components/LaboratoryCard";
+
+import { useRoomId } from "../hooks/useFirestore";
+import Header from "../components/Header";
 
 export type labInfo = {
   id: string;
@@ -14,6 +15,8 @@ export type labInfo = {
   professer: string;
   topic: string;
   univName: string;
+  labURL: string;
+  labDescription: string;
   user: {
     name: string;
     uid: string;
@@ -23,7 +26,6 @@ export type labInfo = {
 
 const firestore = firebaseApp.firestore;
 const AllLaboratory = () => {
-  const navigate = useNavigate();
   const [labId, setlabId] = useState<labInfo[]>([]);
 
   useEffect(() => {
@@ -35,8 +37,6 @@ const AllLaboratory = () => {
         results.push({ ...doc.data(), id: doc.id });
       });
       setlabId(results);
-      console.log(results);
-      console.log(labId);
     });
 
     return () => unsub();
@@ -47,6 +47,7 @@ const AllLaboratory = () => {
       <Typography component="h1" variant="h5" style={{ textAlign: "center" }}>
         研究室一覧ページ
       </Typography>
+      <Header title="研究室一覧ページ" />
       <LabList>
         {labId.map((lab: labInfo) => (
           <>
@@ -56,16 +57,11 @@ const AllLaboratory = () => {
               id={lab.id}
               univName={lab.univName}
               topic={lab.topic}
+              labURL={lab.labURL}
+              labDescription={lab.labDescription}
             ></LaboratoryCard>
             <Box mb={3}></Box>
           </>
-
-          // <div>
-          //   <p key={index}>{lab.id}</p>
-          //   <p key={index}>{lab.professer}</p>
-          //   <p key={index}>{lab.topic}</p>
-          //   <p key={index}>{lab.univName}</p>
-          // </div>
         ))}
       </LabList>
     </>
