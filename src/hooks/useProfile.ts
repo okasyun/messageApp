@@ -26,11 +26,8 @@ export const useProfile = () => {
         );
 
         const querySnapshot = await getDocs(q);
-        console.log(querySnapshot);
         querySnapshot.forEach((doc) => {
           const docData = doc.data();
-          docData.id = doc.id;
-          console.log(docData);
           setProfile(docData);
         });
       }
