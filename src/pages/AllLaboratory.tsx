@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Box } from "@mui/material";
 import { collection, onSnapshot } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import Typography from "@mui/material/Typography";
 import LaboratoryCard from "../components/LaboratoryCard";
 
 import { useRoomId } from "../hooks/useFirestore";
@@ -32,7 +31,6 @@ const AllLaboratory = () => {
     const docRef = collection(firestore, "rooms");
     const unsub = onSnapshot(docRef, (snapshot) => {
       let results: any = [];
-      // let results: any = [];
       snapshot.docs.forEach((doc) => {
         results.push({ ...doc.data(), id: doc.id });
       });
@@ -44,14 +42,12 @@ const AllLaboratory = () => {
 
   return (
     <>
-      <Typography component="h1" variant="h5" style={{ textAlign: "center" }}>
-        研究室一覧ページ
-      </Typography>
       <Header title="研究室一覧ページ" />
       <LabList>
         {labId.map((lab: labInfo) => (
           <>
             <LaboratoryCard
+              key={lab.id}
               labName={lab.labName}
               professer={lab.professer}
               id={lab.id}
@@ -59,7 +55,7 @@ const AllLaboratory = () => {
               topic={lab.topic}
               labURL={lab.labURL}
               labDescription={lab.labDescription}
-            ></LaboratoryCard>
+            />
             <Box mb={3}></Box>
           </>
         ))}
