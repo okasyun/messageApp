@@ -30,7 +30,6 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/submit-room" element={<SubmitRoom />}></Route>
         </Route>
         <Route path="/all-laboratory/room/:id" element={<Chat />} />
         <Route path="/top" element={<Top />} />
