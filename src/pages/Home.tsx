@@ -47,7 +47,6 @@ const Home = () => {
           <Box
             key={message.id}
             sx={{
-              // height: "10px",
               display: "flex",
               flexDirection:
                 profile && profile.uid === message.user.uid
@@ -72,7 +71,6 @@ const Home = () => {
                 {message.text}
               </Typography>
               <Typography sx={{ fontSize: 12 }}>
-                {/* {format(message.createdAt.toDate(), "yyyy年MM月dd日")} */}
                 {time(message.createdAt)}
               </Typography>
             </Box>
